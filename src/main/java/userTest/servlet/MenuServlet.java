@@ -4,7 +4,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import userTest.dao.UserDAO;
 import userTest.freemarker.TemplateProvider;
 
 import javax.inject.Inject;
@@ -17,34 +16,32 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/userList")
-public class UserListServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/menu")
+public class MenuServlet extends HttpServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserListServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MenuServlet.class);
 
-    private static final String TEMPLATE_NAME = "userList";
+    private static final String TEMPLATE_NAME = "menu";
 
     @Inject
     private TemplateProvider templateProvider;
 
-    @Inject
-    private UserDAO userDAO;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
-
         Map<String, Object> model = new HashMap<>();
-        model.put("usersList", userDAO.findAll());
+        model.put("member1", "Bartosz Wiśniewski");
+
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+
+        Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
 
         try {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
-            LOG.error("Error while processing the template: " + e.getMessage());
-            e.printStackTrace();
+            LOG.error("Error while processing the template: " + e);
         }
-
 
     }
 }
