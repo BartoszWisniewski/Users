@@ -1,4 +1,4 @@
-package user_test.freemarker;
+package userTest.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
