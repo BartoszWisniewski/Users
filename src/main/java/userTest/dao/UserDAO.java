@@ -31,7 +31,20 @@ public class UserDAO {
 
     public List<User> findAll() {
         final Query query = entityManager.createQuery("SELECT u FROM User u");
-
         return query.getResultList();
     }
+
+    /*public User findLogin(String login){
+        final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
+        query.setParameter("login", login);
+        return (User) query.getResultList();
+    }*/
+
+    public List findByLogin (String login) {
+        final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
+        query.setParameter("login", login);
+        return query.getResultList();
+    }
+
+
 }

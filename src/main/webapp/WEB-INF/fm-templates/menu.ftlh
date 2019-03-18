@@ -7,6 +7,9 @@
 
 </div>
 
+<a href="userList">Users view</a><p>
+<a href="addUser">Add new user</a>
+
 
 </body>
 </html>
