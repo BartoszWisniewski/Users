@@ -60,9 +60,9 @@ public class AddUserServlet extends HttpServlet {
         final Integer userRole = Integer.parseInt(req.getParameter("UserRole"));
 
         User newUser = new User(login, password, name, surname, telephone, userRole);
-        List findLogin = userDAO.findByLogin(login);
+        User findLogin = userDAO.findByLog(login);
 
-        if(findLogin.size() == 0){
+        if(findLogin == null){
             LOG.info("Add new user");
             userDAO.save(newUser);
             doGet(req,resp);

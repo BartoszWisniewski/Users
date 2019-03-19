@@ -4,6 +4,7 @@ import userTest.model.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
@@ -40,10 +41,16 @@ public class UserDAO {
         return query.getResultList();
     }
 
+   /* public User findByLog(String login) {
+        final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
+        query.setParameter("login", login);
+        return (User) query.getSingleResult();
+    }*/
+
     public User findByLog(String login) {
         final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
         query.setParameter("login", login);
-        return (User)query.getSingleResult();
+        return (User) query.getResultList().stream().findFirst().orElse(null);
     }
 
 }
