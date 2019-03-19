@@ -1,29 +1,33 @@
 <div><h1>List of users</h1></div>
 
+<div>
+    <a href="menu-admin">Back to menu</a>
+</div>
 
 <#if usersList??>
     <table >
         <thead>
         <tr>
-            <th >ID</th>
             <th >Login</th>
             <th >Password</th>
             <th >Name</th>
             <th >Surname</th>
             <th >Telephone</th>
             <th >User role</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <#list usersList as entry>
             <tr>
-                <td>${entry.id}</td>
                 <td>${entry.login}</td>
                 <td>${entry.password}</td>
                 <td>${entry.name}</td>
                 <td>${entry.surname}</td>
                 <td>${entry.telephone}</td>
                 <td>${entry.userRole}</td>
+                <td><a href="/edit-user?log=${entry.login}"> Edit </a> <a href="/delete-user?log=${entry.login}"> Delete </a>
+                </td>
             </tr>
         </#list>
         </tbody>

@@ -17,12 +17,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/userList")
+@WebServlet(urlPatterns = "/user-list")
 public class UserListServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserListServlet.class);
 
-    private static final String TEMPLATE_NAME = "userList";
+    private static final String TEMPLATE_NAME = "user/userList";
 
     @Inject
     private TemplateProvider templateProvider;

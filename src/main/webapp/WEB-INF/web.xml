@@ -8,9 +8,9 @@
         <!--name is always uniqe-->
         <name>java:ds/demods</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://0.0.0.0:6603/usertest?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
+        <url>jdbc:mysql://0.0.0.0:6606/usertest?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Warsaw</url>
         <user>root</user>
-        <password>pass123</password>
+        <password>pass1234</password>
     </data-source>
 
 </web-app>

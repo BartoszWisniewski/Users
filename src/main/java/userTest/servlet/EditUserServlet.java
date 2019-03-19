@@ -19,13 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "add-user")
-public class AddUserServlet extends HttpServlet {
+@WebServlet(urlPatterns = "edit-user")
+public class EditUserServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(EditUserServlet.class);
 
-    private static final Logger LOG = LoggerFactory.getLogger(AddUserServlet.class);
-
-    private static final String TEMPLATE_NAME = "user/addUser";
-    private static final String TEMPLATE_NAME_EXIST = "user/addUserExist";
+    private static final String TEMPLATE_NAME = "user/editUser";
 
     @Inject
     private TemplateProvider templateProvider;
@@ -33,13 +31,17 @@ public class AddUserServlet extends HttpServlet {
     @Inject
     private UserDAO userDAO;
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String userLog = req.getParameter("log");
 
-        Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
+        User editUser = userDAO.findByLog(userLog);
 
         Map<String, Object> model = new HashMap<>();
+        model.put("user", editUser);
+
+
+        Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
 
         try {
             template.process(model, resp.getWriter());
@@ -59,27 +61,19 @@ public class AddUserServlet extends HttpServlet {
         final String telephone = req.getParameter("Telephone");
         final Integer userRole = Integer.parseInt(req.getParameter("UserRole"));
 
-        User newUser = new User(login, password, name, surname, telephone, userRole);
+        User updateUser = new User(login, password, name, surname, telephone, userRole);
         List findLogin = userDAO.findByLogin(login);
 
         if(findLogin.size() == 0){
             LOG.info("Add new user");
-            userDAO.save(newUser);
-            doGet(req,resp);
+            userDAO.save(updateUser);
+            resp.sendRedirect(req.getContextPath() + "/user-list");
         }else {
 
-            Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME_EXIST);
+            userDAO.update(updateUser);
 
-            Map<String, Object> model = new HashMap<>();
-
-            LOG.info("User exist, add new");
-
-            try {
-                template.process(model, resp.getWriter());
-            } catch (TemplateException e) {
-                LOG.error("Error while processing the template: " + e);
-            }
-
+            LOG.info("User updated.");
+            resp.sendRedirect(req.getContextPath() + "/user-list");
         }
 
     }

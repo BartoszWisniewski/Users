@@ -13,17 +13,17 @@ public class UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public long save(User u) {
+    public String save(User u) {
         entityManager.persist(u);
-        return u.getId();
+        return u.getLogin();
     }
 
     public User update(User u) {
         return entityManager.merge(u);
     }
 
-    public void delete(Long id) {
-        final User u = entityManager.find(User.class, id);
+    public void delete(String log) {
+        final User u = entityManager.find(User.class, log);
         if (u != null) {
             entityManager.remove(u);
         }
@@ -34,17 +34,16 @@ public class UserDAO {
         return query.getResultList();
     }
 
-    /*public User findLogin(String login){
-        final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
-        query.setParameter("login", login);
-        return (User) query.getResultList();
-    }*/
-
-    public List findByLogin (String login) {
+    public List findByLogin(String login) {
         final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
         query.setParameter("login", login);
         return query.getResultList();
     }
 
+    public User findByLog(String login) {
+        final Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login");
+        query.setParameter("login", login);
+        return (User)query.getSingleResult();
+    }
 
 }

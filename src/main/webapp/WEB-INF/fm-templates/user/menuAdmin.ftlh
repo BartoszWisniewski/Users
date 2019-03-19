@@ -7,8 +7,8 @@
 
 </div>
 
-<a href="userList">Users view</a><p>
-<a href="addUser">Add new user</a>
+<a href="user-list">Users view</a><p>
+<a href="add-user">Add new user</a>
 
 
 </body>

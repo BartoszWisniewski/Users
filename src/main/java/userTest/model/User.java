@@ -8,11 +8,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
-
-    @Column(name = "LOGIN")
+    @Column(name = "LOGIN", length = 60, unique = true)
     @NotNull
     private String login;
 
@@ -30,7 +26,7 @@ public class User {
 
     @Column(name = "TELEPHONE")
     @NotNull
-    private Long telephone;
+    private String telephone;
 
     @Column(name = "USER_ROLE")
     private Integer userRole;
@@ -38,21 +34,13 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String name, String surname, Long telephone, Integer userRole) {
+    public User(String login, String password, String name, String surname, String telephone, Integer userRole) {
         this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
         this.userRole = userRole;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLogin() {
@@ -87,11 +75,11 @@ public class User {
         this.surname = surname;
     }
 
-    public Long getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Long telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
@@ -106,7 +94,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

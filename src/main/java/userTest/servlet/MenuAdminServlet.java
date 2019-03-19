@@ -16,12 +16,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/menu")
-public class MenuServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/menu-admin")
+public class MenuAdminServlet extends HttpServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MenuServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MenuAdminServlet.class);
 
-    private static final String TEMPLATE_NAME = "menu";
+    private static final String TEMPLATE_NAME = "user/menuAdmin";
 
     @Inject
     private TemplateProvider templateProvider;
