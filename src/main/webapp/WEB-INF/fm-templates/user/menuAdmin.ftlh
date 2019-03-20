@@ -20,6 +20,8 @@
     Surname:${session.surname}
     Telephone:${session.telephone}
     Role:${session.role}
+
+        <a href="logout" >Logout</a>
         <#--</#list>-->
     </#if>
 </div>

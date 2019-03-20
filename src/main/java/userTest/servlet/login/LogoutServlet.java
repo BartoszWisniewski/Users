@@ -5,7 +5,6 @@ import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import userTest.freemarker.TemplateProvider;
-import userTest.service.LoginService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -18,22 +17,23 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/logout")
+public class LogoutServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(LogoutServlet.class);
 
-    private static final Logger LOG = LoggerFactory.getLogger(LoginServlet.class);
-
-    private static final String TEMPLATE_NAME = "log/login";
+    private static final String TEMPLATE_NAME = "log/logout";
 
     @Inject
     private TemplateProvider templateProvider;
 
-    @Inject
-    private LoginService loginService;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
+        session.invalidate();
+
         Map<String, Object> model = new HashMap<>();
+        model.put("session", "false");
 
         Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
 
@@ -41,21 +41,6 @@ public class LoginServlet extends HttpServlet {
             template.process(model, resp.getWriter());
         } catch (TemplateException e) {
             LOG.error("Error while processing the template: " + e);
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        final String login = req.getParameter("login");
-        final String password = req.getParameter("password");
-
-        if (loginService.checkIfuserCanLogin(login, password)) {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", loginService.loggedUser(login));
-            resp.sendRedirect(req.getContextPath() + "/menu-admin");
-        } else {
-            resp.sendRedirect(req.getContextPath() + "/login");
         }
 
     }
