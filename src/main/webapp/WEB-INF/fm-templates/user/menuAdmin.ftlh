@@ -11,5 +11,18 @@
 <a href="add-user">Add new user</a>
 
 
+<div>
+    <#if session??>
+    Session information:
+       <#-- <#list session as entry>-->
+    Login:${session.login}
+    Name:${session.name}
+    Surname:${session.surname}
+    Telephone:${session.telephone}
+    Role:${session.role}
+        <#--</#list>-->
+    </#if>
+</div>
+
 </body>
 </html>

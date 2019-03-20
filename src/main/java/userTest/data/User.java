@@ -1,4 +1,4 @@
-package userTest.model;
+package userTest.data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

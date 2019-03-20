@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import userTest.dao.UserDAO;
 import userTest.freemarker.TemplateProvider;
-import userTest.model.User;
+import userTest.data.User;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
