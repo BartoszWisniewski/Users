@@ -4,6 +4,8 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import userTest.dao.UserDAO;
+import userTest.data.User;
 import userTest.freemarker.TemplateProvider;
 import userTest.service.LoginService;
 
@@ -30,6 +32,19 @@ public class LoginServlet extends HttpServlet {
 
     @Inject
     private LoginService loginService;
+
+    @Inject
+    private UserDAO userDAO;
+
+    @Override
+    public void init(){
+        User admin = new User("Admin","haslo","Adam","Kowalski","123456789",2);
+        User user1 = new User("Master","qwerty","Karol","Nowy","987987987",1);
+        User user2 = new User("misiaczek","wsad","Marta","Nowińska","456456456",0);
+        userDAO.save(admin);
+        userDAO.save(user1);
+        userDAO.save(user2);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

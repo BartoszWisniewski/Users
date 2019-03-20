@@ -13,16 +13,15 @@
 
 <div>
     <#if session??>
-    Session information:
-       <#-- <#list session as entry>-->
-    Login:${session.login}
-    Name:${session.name}
-    Surname:${session.surname}
-    Telephone:${session.telephone}
-    Role:${session.role}
+   <p>Session information:<br>
+    Login: ${session.login}<br>
+    Name: ${session.name}<br>
+    Surname: ${session.surname}<br>
+    Telephone: ${session.telephone}<br>
+    Role: ${session.role}</p><br>
 
         <a href="logout" >Logout</a>
-        <#--</#list>-->
+
     </#if>
 </div>
 
