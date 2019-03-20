@@ -1,4 +1,4 @@
-package userTest.servlet;
+package userTest.servlet.adminPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -19,11 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "edit-user")
+@WebServlet(urlPatterns = "/menu-admin/edit-user")
 public class EditUserServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(EditUserServlet.class);
 
-    private static final String TEMPLATE_NAME = "user/editUser";
+    private static final String TEMPLATE_NAME = "adminMenu/editUser";
 
     @Inject
     private TemplateProvider templateProvider;
@@ -67,13 +67,13 @@ public class EditUserServlet extends HttpServlet {
         if(findLogin.size() == 0){
             LOG.info("Add new user");
             userDAO.save(updateUser);
-            resp.sendRedirect(req.getContextPath() + "/user-list");
+            resp.sendRedirect(req.getContextPath() + "/menu-admin/user-list");
         }else {
 
             userDAO.update(updateUser);
 
             LOG.info("User updated.");
-            resp.sendRedirect(req.getContextPath() + "/user-list");
+            resp.sendRedirect(req.getContextPath() + "/menu-admin/user-list");
         }
 
     }

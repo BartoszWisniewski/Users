@@ -1,4 +1,4 @@
-package userTest.servlet;
+package userTest.servlet.adminPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -18,13 +18,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "add-user")
+@WebServlet(urlPatterns = "/menu-admin/add-user")
 public class AddUserServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(AddUserServlet.class);
 
-    private static final String TEMPLATE_NAME = "user/addUser";
-    private static final String TEMPLATE_NAME_EXIST = "user/addUserExist";
+    private static final String TEMPLATE_NAME = "adminMenu/addUser";
+    private static final String TEMPLATE_NAME_EXIST = "adminMenu/addUserExist";
 
     @Inject
     private TemplateProvider templateProvider;

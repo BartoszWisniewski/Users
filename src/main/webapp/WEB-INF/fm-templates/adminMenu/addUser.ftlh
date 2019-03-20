@@ -1,10 +1,10 @@
 <html lang="pl-PL">
 <body>
 <div>
-    <a href="menu-admin">Back to menu</a>
+    <a href="/menu-admin">Back to menu</a>
 </div>
 <div >
-<form action="/add-user" method="post">
+<form action="/menu-admin/add-user" method="post">
     <table >
         <thead>
         <tr>

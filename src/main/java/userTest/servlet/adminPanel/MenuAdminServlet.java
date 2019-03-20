@@ -1,4 +1,4 @@
-package userTest.servlet;
+package userTest.servlet.adminPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -24,7 +24,7 @@ public class MenuAdminServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(MenuAdminServlet.class);
 
-    private static final String TEMPLATE_NAME = "user/menuAdmin";
+    private static final String TEMPLATE_NAME = "adminMenu/menuAdmin";
 
     @Inject
     private TemplateProvider templateProvider;

@@ -12,7 +12,5 @@ Session: ${session}
     goes to login page in 5 seconds
 </div>
 
-
-
 </body>
 </html>

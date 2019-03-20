@@ -1,4 +1,4 @@
-package userTest.servlet;
+package userTest.servlet.adminPanel;
 
 import userTest.dao.UserDAO;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "delete-user")
+@WebServlet(urlPatterns = "/menu-admin/delete-user")
 public class DeleteUserServlet extends HttpServlet {
 
     @Inject
@@ -21,6 +21,6 @@ public class DeleteUserServlet extends HttpServlet {
         String deleteUser = req.getParameter("log");
         userDAO.delete(deleteUser);
 
-        resp.sendRedirect(req.getContextPath() + "/user-list");
+        resp.sendRedirect(req.getContextPath() + "/menu-admin/user-list");
     }
 }

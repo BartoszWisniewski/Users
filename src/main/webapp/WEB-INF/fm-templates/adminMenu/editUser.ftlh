@@ -1,16 +1,10 @@
 <html lang="pl-PL">
 <body>
-
 <div>
-    User exist.
+    <a href="/menu-admin">Back to menu</a>
 </div>
-
-<div>
-    <a href="menu-admin">Back to menu</a>
-</div>
-
 <div >
-    <form action="/add-user" method="post">
+    <form action="/menu-admin/edit-user" method="post">
         <table >
             <thead>
             <tr>
@@ -24,11 +18,11 @@
             </thead>
             <tbody>
             <tr>
-                <td><input type="text" name="Login"></td>
-                <td><input type="text" name="Password"></td>
-                <td><input type="text" name="Name"></td>
-                <td><input type="text" name="Surname"></td>
-                <td><input type="text" name="Telephone"></td>
+                <td><input type="text" name="Login" value="${user.login}"></td>
+                <td><input type="text" name="Password" value="${user.password}"></td>
+                <td><input type="text" name="Name" value="${user.name}"></td>
+                <td><input type="text" name="Surname" value="${user.surname}"></td>
+                <td><input type="text" name="Telephone" value="${user.telephone}"></td>
                 <td><select name="UserRole">
                         <option value="0">Standard user</option>
                         <option value="1">Manager</option>

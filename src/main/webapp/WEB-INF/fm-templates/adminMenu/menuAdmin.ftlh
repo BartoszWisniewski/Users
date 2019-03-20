@@ -7,8 +7,8 @@
 
 </div>
 
-<a href="user-list">Users view</a><p>
-<a href="add-user">Add new user</a>
+<a href="/menu-admin/user-list">Users view</a><p>
+<a href="/menu-admin/add-user">Add new user</a>
 
 
 <div>

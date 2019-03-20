@@ -1,7 +1,7 @@
 <div><h1>List of users</h1></div>
 
 <div>
-    <a href="menu-admin">Back to menu</a>
+    <a href="/menu-admin">Back to menu</a>
 </div>
 
 <#if usersList??>
@@ -26,7 +26,7 @@
                 <td>${entry.surname}</td>
                 <td>${entry.telephone}</td>
                 <td>${entry.userRole}</td>
-                <td><a href="/edit-user?log=${entry.login}"> Edit </a> <a href="/delete-user?log=${entry.login}"> Delete </a>
+                <td><a href="/menu-admin/edit-user?log=${entry.login}"> Edit </a> <a href="/menu-admin/delete-user?log=${entry.login}"> Delete </a>
                 </td>
             </tr>
         </#list>
