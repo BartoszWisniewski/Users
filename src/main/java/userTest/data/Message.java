@@ -21,20 +21,22 @@ public class Message {
     @Column(name = "DATE")
     private Date date;
 
-    /*@Column(name = "CONTENT")
+    @Column(name = "CONTENT")
     @NotNull
-    private String content;*/
+    private String content;
 
-    /*@Column(name = "GROUP")
+    @Column(name = "USER_GROUP")
     @NotNull
-    private String group;*/
+    private String userGroup;
 
     public Message() {
     }
 
-    public Message(String title, Date date) {
+    public Message(String title, Date date, String content, String userGroup) {
         this.title = title;
         this.date = date;
+        this.content = content;
+        this.userGroup = userGroup;
     }
 
     public Long getId() {
@@ -61,12 +63,30 @@ public class Message {
         this.date = date;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(String userGroup) {
+        this.userGroup = userGroup;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", date=" + date +
+                ", content='" + content + '\'' +
+                ", userGroup='" + userGroup + '\'' +
                 '}';
     }
 }
