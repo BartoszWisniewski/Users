@@ -15,8 +15,8 @@
 </div>
 
 <div>
-    <a href="/menu-admin/user-list">Users view</a><p>
-    <a href="/menu-admin/add-user">Add new user</a>
+    <a href="/menu-menager/user-list">Users view</a><p>
+    <a href="/menu-menager/edit-profile">Edit your profile</a>
 </div>
 
 

@@ -9,6 +9,10 @@ import userTest.dto.UserDTO;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Stateless
 public class LoginService {
@@ -16,9 +20,6 @@ public class LoginService {
 
     @Inject
     private UserDAO userDAO;
-
-   /* @Inject
-    private UserDTO userDTO;*/
 
     public boolean checkIfuserCanLogin(String login, String password) {
         User user = null;
@@ -44,6 +45,19 @@ public class LoginService {
 
         return new UserDTO(user.getLogin(), user.getName(), user.getSurname(), user.getTelephone(), user.getUserRole());
 
+    }
+
+    public List<UserDTO> listOfAllusers() {
+        List<UserDTO> result = userDAO.findAll().stream().map(o -> {
+            String login = o.getLogin();
+            String name = o.getName();
+            String surname = o.getSurname();
+            String telephone = o.getTelephone();
+            Integer role = o.getUserRole();
+            return new UserDTO(login, name, surname, telephone, role);
+        })
+                .collect(toList());
+        return result;
     }
 
 

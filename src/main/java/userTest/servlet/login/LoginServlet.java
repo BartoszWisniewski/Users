@@ -64,11 +64,17 @@ public class LoginServlet extends HttpServlet {
 
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");
+        HttpSession session = req.getSession();
 
         if (loginService.checkIfuserCanLogin(login, password)) {
-            HttpSession session = req.getSession();
             session.setAttribute("user", loginService.loggedUser(login));
-            resp.sendRedirect(req.getContextPath() + "/menu-admin");
+            session.setAttribute("login",login);
+            if(loginService.loggedUser(login).getRole().equals(2)){
+                resp.sendRedirect(req.getContextPath() + "/menu-admin");
+            }else if(loginService.loggedUser(login).getRole().equals(1)){
+                resp.sendRedirect(req.getContextPath() + "/menu-menager");
+            }else
+                resp.sendRedirect(req.getContextPath() + "/menu-user");
         } else {
             resp.sendRedirect(req.getContextPath() + "/login");
         }
