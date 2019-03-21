@@ -22,7 +22,7 @@ public class UserListStandardUserServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserListStandardUserServlet.class);
 
-    private static final String TEMPLATE_NAME = "standardUserMenu/menuStandardUser";
+    private static final String TEMPLATE_NAME = "standardUserMenu/userListStandardUser";
 
     @Inject
     private TemplateProvider templateProvider;

@@ -26,7 +26,7 @@
             </tr>
             </tbody>
         </table>
-        <input type="hidden" id="UserRole" name="UserRole" value="1">
+        <input type="hidden" name="UserRole" value="1">
         <input type="submit"> <input type="reset">
     </form>
 </div>

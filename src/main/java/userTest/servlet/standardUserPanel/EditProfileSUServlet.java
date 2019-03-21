@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import userTest.dao.UserDAO;
 import userTest.data.User;
 import userTest.freemarker.TemplateProvider;
+import userTest.service.LoginService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -24,13 +25,16 @@ public class EditProfileSUServlet extends HttpServlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(EditProfileSUServlet.class);
 
-    private static final String TEMPLATE_NAME = "standardUserMenu/menuStandardUser";
+    private static final String TEMPLATE_NAME = "standardUserMenu/editProfileSU";
 
     @Inject
     private TemplateProvider templateProvider;
 
     @Inject
     private UserDAO userDAO;
+
+    @Inject
+    private LoginService loginService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -68,7 +72,9 @@ public class EditProfileSUServlet extends HttpServlet {
 
         LOG.info("Update user profile");
 
-        userDAO.save(updateUser);
+        userDAO.update(updateUser);
+
+        session.setAttribute("user", loginService.loggedUser(log));
 
         resp.sendRedirect(req.getContextPath() + "/menu-standard-user");
 

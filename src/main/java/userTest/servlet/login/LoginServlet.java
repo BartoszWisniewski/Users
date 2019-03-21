@@ -72,9 +72,9 @@ public class LoginServlet extends HttpServlet {
             if(loginService.loggedUser(login).getRole().equals(2)){
                 resp.sendRedirect(req.getContextPath() + "/menu-admin");
             }else if(loginService.loggedUser(login).getRole().equals(1)){
-                resp.sendRedirect(req.getContextPath() + "/menu-menager");
+                resp.sendRedirect(req.getContextPath() + "/menu-manager");
             }else
-                resp.sendRedirect(req.getContextPath() + "/menu-user");
+                resp.sendRedirect(req.getContextPath() + "/menu-standard-user");
         } else {
             resp.sendRedirect(req.getContextPath() + "/login");
         }
