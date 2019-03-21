@@ -17,3 +17,12 @@ create database usertest;
 * Usunięcie kontenera:
 
 $ docker rm -f user-db
+
+#Technologies
+* Java SE
+* Java EE
+* Maven
+* WildFly
+* MySQL
+* Hibernate
+* Freemarker

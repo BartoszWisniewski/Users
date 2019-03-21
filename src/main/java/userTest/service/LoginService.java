@@ -21,7 +21,7 @@ public class LoginService {
     @Inject
     private UserDAO userDAO;
 
-    public boolean checkIfuserCanLogin(String login, String password) {
+    public boolean checkIfUserCanLogin(String login, String password) {
         User user = null;
 
         try {
@@ -46,19 +46,5 @@ public class LoginService {
         return new UserDTO(user.getLogin(), user.getName(), user.getSurname(), user.getTelephone(), user.getUserRole());
 
     }
-
-    public List<UserDTO> listOfAllusers() {
-        List<UserDTO> result = userDAO.findAll().stream().map(o -> {
-            String login = o.getLogin();
-            String name = o.getName();
-            String surname = o.getSurname();
-            String telephone = o.getTelephone();
-            Integer role = o.getUserRole();
-            return new UserDTO(login, name, surname, telephone, role);
-        })
-                .collect(toList());
-        return result;
-    }
-
 
 }

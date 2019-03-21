@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import userTest.freemarker.TemplateProvider;
 import userTest.service.LoginService;
+import userTest.service.UserService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class UserListManagerServlet extends HttpServlet {
     private TemplateProvider templateProvider;
 
     @Inject
-    private LoginService loginService;
+    private UserService userService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +37,7 @@ public class UserListManagerServlet extends HttpServlet {
         Template template = templateProvider.getTemplate(getServletContext(), TEMPLATE_NAME);
 
         Map<String, Object> model = new HashMap<>();
-        model.put("usersList", loginService.listOfAllusers());
+        model.put("usersList", userService.listOfAllusers());
 
         try {
             template.process(model, resp.getWriter());

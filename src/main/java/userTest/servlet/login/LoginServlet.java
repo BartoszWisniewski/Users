@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
         final String password = req.getParameter("password");
         HttpSession session = req.getSession();
 
-        if (loginService.checkIfuserCanLogin(login, password)) {
+        if (loginService.checkIfUserCanLogin(login, password)) {
             session.setAttribute("user", loginService.loggedUser(login));
             session.setAttribute("login",login);
             if(loginService.loggedUser(login).getRole().equals(2)){
