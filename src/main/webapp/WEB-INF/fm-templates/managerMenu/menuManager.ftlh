@@ -15,8 +15,9 @@
 </div>
 
 <div>
-    <a href="/menu-menager/user-list">Users view</a><p>
-    <a href="/menu-menager/edit-profile">Edit your profile</a>
+    You are logged by manager
+    <a href="/menu-manager/user-list">Users view</a><p>
+    <a href="/menu-manager/edit-profile">Edit your profile</a>
 </div>
 
 

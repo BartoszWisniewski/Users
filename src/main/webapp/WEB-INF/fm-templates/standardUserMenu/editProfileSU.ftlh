@@ -1,10 +1,10 @@
 <html lang="pl-PL" xmlns="http://java.sun.com/jsf/html">
 <body>
 <div>
-    <a href="/menu-menager">Back to menu</a>
+    <a href="/menu-standard-user">Back to menu</a>
 </div>
 <div >
-    <form action="/menu-menager/edit-profile" method="post">
+    <form action="/menu-standard-user/edit-profile" method="post">
         <table >
             <thead>
             <tr>
@@ -22,6 +22,7 @@
                 <td><input type="text" name="Name" value="${user.name}"></td>
                 <td><input type="text" name="Surname" value="${user.surname}"></td>
                 <td><input type="text" name="Telephone" value="${user.telephone}"></td>
+
             </tr>
             </tbody>
         </table>

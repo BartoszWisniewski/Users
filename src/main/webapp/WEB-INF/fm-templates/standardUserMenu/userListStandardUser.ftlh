@@ -1,7 +1,7 @@
 <div><h1>List of users</h1></div>
 
 <div>
-    <a href="/menu-menager">Back to menu</a>
+    <a href="/menu-standard-user">Back to menu</a>
 </div>
 
 <#if usersList??>

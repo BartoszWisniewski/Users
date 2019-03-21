@@ -1,4 +1,4 @@
-package userTest.servlet.menagerPanel;
+package userTest.servlet.managerPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -17,14 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/menu-menager/edit-profile")
+@WebServlet(urlPatterns = "/menu-manager/edit-profile")
 public class EditProfileServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(EditProfileServlet.class);
 
-    private static final String TEMPLATE_NAME = "menagerMenu/editProfile";
+    private static final String TEMPLATE_NAME = "managerMenu/editProfile";
 
     @Inject
     private TemplateProvider templateProvider;
@@ -70,7 +69,7 @@ public class EditProfileServlet extends HttpServlet {
 
         userDAO.save(updateUser);
 
-        resp.sendRedirect(req.getContextPath() + "/menu-menager");
+        resp.sendRedirect(req.getContextPath() + "/menu-manager");
 
 
 

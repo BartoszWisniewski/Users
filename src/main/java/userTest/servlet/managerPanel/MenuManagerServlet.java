@@ -1,4 +1,4 @@
-package userTest.servlet.menagerPanel;
+package userTest.servlet.managerPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -17,12 +17,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/menu-menager")
-public class MenuMenagerServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/menu-manager")
+public class MenuManagerServlet extends HttpServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MenuMenagerServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MenuManagerServlet.class);
 
-    private static final String TEMPLATE_NAME = "menagerMenu/menuMenager";
+    private static final String TEMPLATE_NAME = "managerMenu/menuManager";
 
     @Inject
     private TemplateProvider templateProvider;

@@ -1,10 +1,9 @@
-package userTest.servlet.menagerPanel;
+package userTest.servlet.managerPanel;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import userTest.dao.UserDAO;
 import userTest.freemarker.TemplateProvider;
 import userTest.service.LoginService;
 
@@ -18,21 +17,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/menu-menager/user-list")
-public class UserListMenagerServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/menu-manager/user-list")
+public class UserListManagerServlet extends HttpServlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserListMenagerServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserListManagerServlet.class);
 
-    private static final String TEMPLATE_NAME = "menagerMenu/userListMenager";
+    private static final String TEMPLATE_NAME = "managerMenu/userListManager";
 
     @Inject
     private TemplateProvider templateProvider;
 
     @Inject
     private LoginService loginService;
-
-    @Inject
-    private UserDAO userDAO;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
