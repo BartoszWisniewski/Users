@@ -1,6 +1,6 @@
 # Project: Users
 
-#Docker:
+# Docker:
 
 * Uruchomienie
 
@@ -18,7 +18,7 @@ create database usertest;
 
 $ docker rm -f user-db
 
-#Technologies
+# Technologies
 * Java SE
 * Java EE
 * Maven
