@@ -12,6 +12,8 @@ $ docker exec -it user-db bash
 
 $ mysql -u root -p 
 
+haslo = pass1234
+
 create database usertest;
 
 * Usunięcie kontenera:
@@ -26,3 +28,4 @@ $ docker rm -f user-db
 * MySQL
 * Hibernate
 * Freemarker
+* Docker
