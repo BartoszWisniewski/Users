@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {})
+@WebFilter(
+        urlPatterns = {"/menu-standard-user", "/menu-standard-user/edit-profile", "/menu-standard-user/user-list"}
+)
 public class AuthenticationStandardUserFilter implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthenticationStandardUserFilter.class);
@@ -34,7 +36,7 @@ public class AuthenticationStandardUserFilter implements Filter {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("user") == null || userDAO.findByLog(session.getAttribute("login").toString()).getUserRole().intValue() != STANDARD_USER) {
-            LOG.warn("Not authorized try get acces to Manager function");
+            LOG.warn("Not authorized try get acces to Standard User function");
             RequestDispatcher requestDispatcher = servletRequest.getRequestDispatcher("/login");
             requestDispatcher.forward(servletRequest, servletResponse);
         }
