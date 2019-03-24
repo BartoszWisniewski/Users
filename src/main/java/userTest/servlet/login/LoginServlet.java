@@ -4,7 +4,9 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import userTest.dao.MessageDAO;
 import userTest.dao.UserDAO;
+import userTest.data.Message;
 import userTest.data.User;
 import userTest.freemarker.TemplateProvider;
 import userTest.service.LoginService;
@@ -36,6 +38,9 @@ public class LoginServlet extends HttpServlet {
     @Inject
     private UserDAO userDAO;
 
+    @Inject
+    private MessageDAO messageDAO;
+
     @Override
     public void init(){
         User admin = new User("Admin","haslo","Adam","Kowalski","123456789",2);
@@ -44,6 +49,13 @@ public class LoginServlet extends HttpServlet {
         userDAO.save(admin);
         userDAO.save(user1);
         userDAO.save(user2);
+
+        Message msg1 = new Message("ssss","20-10-2011",);
+        messageDAO.save(msg1);
+
+
+
+
     }
 
     @Override
