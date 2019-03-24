@@ -57,6 +57,7 @@ public class LoginServiceTest {
 
 
     @Test
+    @DisplayName("Data logged user")
     public void dataLoggedUser() {
 
         LoginService test = mock(LoginService.class);
