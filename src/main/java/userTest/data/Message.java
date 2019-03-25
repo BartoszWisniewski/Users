@@ -18,7 +18,7 @@ public class Message {
     @NotNull
     private String title;
 
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     @Column(name = "DATE")
     private LocalDate date;
 
