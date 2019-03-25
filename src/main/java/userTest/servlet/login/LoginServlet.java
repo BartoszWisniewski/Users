@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,19 +43,20 @@ public class LoginServlet extends HttpServlet {
     private MessageDAO messageDAO;
 
     @Override
-    public void init(){
-        User admin = new User("Admin","haslo","Adam","Kowalski","123456789",2);
-        User user1 = new User("Master","qwerty","Karol","Nowy","987987987",1);
-        User user2 = new User("misiaczek","wsad","Marta","Nowińska","456456456",0);
+    public void init() {
+        User admin = new User("Admin", "haslo", "Adam", "Kowalski", "123456789", 2);
+        User user1 = new User("Master", "qwerty", "Karol", "Nowy", "987987987", 1);
+        User user2 = new User("misiaczek", "wsad", "Marta", "Nowińska", "456456456", 0);
         userDAO.save(admin);
         userDAO.save(user1);
         userDAO.save(user2);
 
-        Message msg1 = new Message("ssss","20-10-2011",);
+        Message msg1 = new Message("Hello", LocalDate.of(2018, 3, 22), "Witaj Manager", "Manager");
+        Message msg2 = new Message("Hello", LocalDate.of(2018, 3, 21), "Witaj Standard user", "Standard");
+        Message msg3 = new Message("Hello", LocalDate.of(2018, 3, 20), "Witaj Admin", "Admin");
         messageDAO.save(msg1);
-
-
-
+        messageDAO.save(msg2);
+        messageDAO.save(msg3);
 
     }
 
@@ -80,12 +82,12 @@ public class LoginServlet extends HttpServlet {
 
         if (loginService.checkIfUserCanLogin(login, password)) {
             session.setAttribute("user", loginService.loggedUser(login));
-            session.setAttribute("login",login);
-            if(loginService.loggedUser(login).getRole().equals(2)){
+            session.setAttribute("login", login);
+            if (loginService.loggedUser(login).getRole().equals(2)) {
                 resp.sendRedirect(req.getContextPath() + "/menu-admin");
-            }else if(loginService.loggedUser(login).getRole().equals(1)){
+            } else if (loginService.loggedUser(login).getRole().equals(1)) {
                 resp.sendRedirect(req.getContextPath() + "/menu-manager");
-            }else
+            } else
                 resp.sendRedirect(req.getContextPath() + "/menu-standard-user");
         } else {
             resp.sendRedirect(req.getContextPath() + "/login");

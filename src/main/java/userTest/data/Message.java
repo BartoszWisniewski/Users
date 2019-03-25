@@ -2,6 +2,7 @@ package userTest.data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Message {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "CONTENT")
     @NotNull
@@ -32,7 +33,7 @@ public class Message {
     public Message() {
     }
 
-    public Message(String title, Date date, String content, String userGroup) {
+    public Message(String title, LocalDate date, String content, String userGroup) {
         this.title = title;
         this.date = date;
         this.content = content;
@@ -55,11 +56,11 @@ public class Message {
         this.title = title;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
