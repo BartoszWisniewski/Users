@@ -53,4 +53,10 @@ public class UserDAO {
         return (User) query.getResultList().stream().findFirst().orElse(null);
     }
 
+    public Integer findUserGroup(String login){
+        final Query query = entityManager.createQuery("SELECT u.userRole FROM User u WHERE u.login = :login");
+        query.setParameter("login", login);
+        return (Integer) query.getSingleResult();
+    }
+
 }
