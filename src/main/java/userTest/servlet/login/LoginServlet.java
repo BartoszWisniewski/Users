@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,9 +53,9 @@ public class LoginServlet extends HttpServlet {
         userDAO.save(user1);
         userDAO.save(user2);
 
-        Message msg1 = new Message("Hello", LocalDate.of(2018, 3, 22), "Witaj Manager", "Manager");
-        Message msg2 = new Message("Hello", LocalDate.of(2018, 3, 21), "Witaj Standard user", "Standard");
-        Message msg3 = new Message("Hello", LocalDate.of(2018, 3, 20), "Witaj Admin", "Admin");
+        Message msg1 = new Message("Hello", LocalDate.of(2018, 3, 22), LocalTime.of(14, 20, 20), "Witaj Manager", "Manager");
+        Message msg2 = new Message("Hello", LocalDate.of(2018, 3, 21), LocalTime.of(14, 30, 25), "Witaj Standard user", "Standard");
+        Message msg3 = new Message("Hello", LocalDate.of(2018, 3, 20), LocalTime.of(10, 10, 15), "Witaj Admin", "Admin");
         messageDAO.save(msg1);
         messageDAO.save(msg2);
         messageDAO.save(msg3);

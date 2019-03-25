@@ -3,6 +3,7 @@ package userTest.data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "MESSAGES")
@@ -21,6 +22,9 @@ public class Message {
     @Column(name = "DATE")
     private LocalDate date;
 
+    @Column(name = "TIME")
+    private LocalTime time;
+
     @Column(name = "CONTENT")
     @NotNull
     private String content;
@@ -32,9 +36,10 @@ public class Message {
     public Message() {
     }
 
-    public Message(String title, LocalDate date, String content, String userGroup) {
+    public Message(String title, LocalDate date, LocalTime time, String content, String userGroup) {
         this.title = title;
         this.date = date;
+        this.time = time;
         this.content = content;
         this.userGroup = userGroup;
     }
@@ -63,6 +68,14 @@ public class Message {
         this.date = date;
     }
 
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
     public String getContent() {
         return content;
     }
@@ -85,6 +98,7 @@ public class Message {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", date=" + date +
+                ", time=" + time +
                 ", content='" + content + '\'' +
                 ", userGroup='" + userGroup + '\'' +
                 '}';

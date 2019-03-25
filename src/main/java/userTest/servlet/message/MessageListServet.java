@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,8 +73,9 @@ public class MessageListServet extends HttpServlet {
         final String content = req.getParameter("Content");
         final String userGroup = req.getParameter("UserGroup");
         LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
 
-        Message newMessage = new Message(title, date, content, userGroup);
+        Message newMessage = new Message(title, date, time, content, userGroup);
         messageDAO.save(newMessage);
 
         doGet(req, resp);

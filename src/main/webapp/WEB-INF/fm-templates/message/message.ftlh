@@ -47,6 +47,7 @@
             <tr>
                 <th>Title</th>
                 <th>Date</th>
+                <th>Time</th>
                 <th>Content</th>
                 <th></th>
             </tr>
@@ -56,6 +57,7 @@
                 <tr>
                     <td>${entry.title}</td>
                     <td>${entry.date}</td>
+                    <td>${entry.time}</td>
                     <td>${entry.content}</td>
                     </td>
                 </tr>
