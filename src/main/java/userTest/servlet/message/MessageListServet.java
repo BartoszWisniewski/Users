@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import userTest.dao.MessageDAO;
 import userTest.dao.UserDAO;
+import userTest.data.Message;
 import userTest.freemarker.TemplateProvider;
 import userTest.service.MessageService;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +37,9 @@ public class MessageListServet extends HttpServlet {
     @Inject
     private UserDAO userDAO;
 
+    @Inject
+    private MessageDAO messageDAO;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -43,10 +48,12 @@ public class MessageListServet extends HttpServlet {
         HttpSession session = req.getSession();
 
         String login = String.valueOf(session.getAttribute("login"));
+        Integer group = userDAO.findUserGroup(login);
 
 
         Map<String, Object> model = new HashMap<>();
-        model.put("messageList", messageService.getMessageForGroup(userDAO.findUserGroup(login)));
+        model.put("messageList", messageService.getMessageForGroup(group));
+        model.put("group", group);
 
         try {
             template.process(model, resp.getWriter());
@@ -59,6 +66,16 @@ public class MessageListServet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        final String title = req.getParameter("Title");
+        final String content = req.getParameter("Content");
+        final String userGroup = req.getParameter("UserGroup");
+        LocalDate date = LocalDate.now();
+
+        Message newMessage = new Message(title, date, content, userGroup);
+        messageDAO.save(newMessage);
+
+        doGet(req, resp);
 
     }
 }

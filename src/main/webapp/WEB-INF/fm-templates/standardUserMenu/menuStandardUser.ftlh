@@ -17,7 +17,8 @@
 <div>
     You are logged by Standard User
     <a href="/menu-standard-user/user-list">Users view</a><p>
-        <a href="/menu-standard-user/edit-profile">Edit your profile</a>
+        <a href="/menu-standard-user/edit-profile">Edit your profile</a><p>
+        <a href="/message">View message</a>
 </div>
 
 </body>

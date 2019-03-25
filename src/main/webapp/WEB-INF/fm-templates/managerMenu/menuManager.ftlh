@@ -17,7 +17,8 @@
 <div>
     You are logged by manager
     <a href="/menu-manager/user-list">Users view</a><p>
-    <a href="/menu-manager/edit-profile">Edit your profile</a>
+    <a href="/menu-manager/edit-profile">Edit your profile</a><p>
+        <a href="/message">View message</a>
 </div>
 
 
